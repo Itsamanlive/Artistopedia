@@ -1,0 +1,68 @@
+
+.comp-container{
+    background-color: #ff80ab;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.competition{
+    height: 70vh;
+    width: 100vw;
+    background: white;
+    margin: 50px;
+    padding: 50px;
+    border: solid 3px #333;
+    border-radius: 10px;
+}
+
+.competition .name{
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 600;
+    color: white;
+    text-shadow:  -2px -2px 0 #333,  
+    1px -1px 0 #333,
+    -1px 1px 0 #333,
+     1px 1px 0 #333;
+}
+
+.competition .details{
+    margin-top: 40px;
+    letter-spacing: 2px;
+}
+
+.competition .participate{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+    width: -webkit-fill-available;
+    margin-top: 40px;
+}
+
+.competition .upload{
+    border-radius: 5px;
+    border: solid 3px #333333;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    cursor: pointer;
+}
+
+.participate input{
+    display: none;
+    height: 0px;
+    width: 0px;
+}
+
+.upload label{
+    cursor: pointer;
+}
+
