@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route} from "react-router-dom";
 
 import './App.css';
 
-import Login from './Login';
+import Landing from './Landing';
 import Dashboard from "./Dashboard";
 import Competition from "./Competition";
 
@@ -15,7 +15,7 @@ const App = (props) => {
                 Artist o Pedia
         </div>
         <Router>
-          <Route path = "/" exact component = { Login } />
+          <Route path = "/" exact component = { Landing } />
           <Route path = "/dashboard" exact component = { Dashboard } />
           <Route path = "/competition" exact component = { Competition } />
         </Router>
