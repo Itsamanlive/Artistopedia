@@ -132,7 +132,6 @@ class Table(object):
     def fetch(self,query=None):
         if query:
             pass
-        pass
     
 class JSON(object):
     """
