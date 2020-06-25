@@ -16,10 +16,10 @@ const Dashboard = (props) =>{
         <div className="comp-container">
             <div className="competition">
                 <div className="name">
-                    Competition Name 🎵
+                    {props.location.state.name}
                 </div>
                 <div className="details">
-                    Competition details....
+                    {/* Competition details.... */}
                 </div>
                 <div className="participate">
                     <div className="upload">

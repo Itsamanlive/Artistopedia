@@ -50,21 +50,22 @@
   }
 
 .container{
-    height: 75vh;
-    width: 100vw;
+    height: 70vh;
+    width: 70vw;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-gap: 50px;
     padding: 0px 50px 50px 50px;
     margin-top: 90px;
     overflow-y: scroll;
+    align-items: center;
 }
 
 .card{
     background: white;
-    height: 200px;
+    height: 100%;
     padding: 20px 25px;
-    border-radius: 5px;
+    border-radius: 8px;
     border: 3px solid #333;
     cursor: pointer;
 }

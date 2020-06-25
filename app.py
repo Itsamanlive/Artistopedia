@@ -1,9 +1,9 @@
-from flask import Flask,request,Response,make_response,jsonify
+from flask import Flask,request,jsonify,render_template,send_from_directory
 from flask_cors import CORS
 
 import jsondb 
 
-app = Flask(__name__)
+app = Flask(__name__,template_folder="./templates")
 CORS(app)
 
 db = jsondb.connect("./data")
@@ -11,7 +11,11 @@ db = jsondb.connect("./data")
 class Users:
     """REST Section For users"""
     def __init__(self):
-        self.db = db.users
+        try:    
+            self.db = db.users
+        except:
+            db.createDB("users")
+            self.db = db.users
 
     def GET(self,request:request):
         return "GET"
@@ -57,9 +61,13 @@ _users = Users()
 def users():
     return getattr(_users,request.method)(request)
 
+@app.route("/static/<string:_type>/<string:_file>",methods=['GET'])
+def serve_static(_type,_file):
+    return send_from_directory(f"./templates/static/{_type}",_file,mimetype=f"text/{_type}")
+
 @app.route("/",methods=['GET'])
 def index():
-    return "Hello"
+    return render_template("index.html")
 
 
 if __name__ == "__main__":

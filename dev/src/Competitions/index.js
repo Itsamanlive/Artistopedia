@@ -3,11 +3,11 @@ import "./dashboard.css";
 
 const Dashboard = (props) =>{
 
-    function gotoCopetition(id){
+    function gotoCopetition(name){
         props.history.push({
             pathname: '/competition',
             state: {
-              id: id,
+              name:name
             }
         })
     }  
@@ -18,23 +18,55 @@ const Dashboard = (props) =>{
         <div className="dash-container">
             <div className="dashboard">
                 <div className="container">
-                    {
-                        data.map((i,d)=>{
-                            return(
-                                <div className="card" key={i} onClick={()=>{gotoCopetition(i)}}>
-                                    <div className="title">
-                                        🎸 Competition Name
-                                    </div>
-                                    <div className="type">
-                                        🎵 Competition Type
-                                    </div>
-                                    <div className="duration">
-                                        ⏲ Competition duration
-                                    </div>
-                                </div>
-                            )
-                        })
-                    }
+                    
+                    <div className="card"onClick={()=>gotoCopetition("1v1")} >
+                        <div className="title">
+                            🎸 1 v 1
+                        </div>
+                        <div className="type">
+                            🎵 Competition Type
+                        </div>
+                        <div className="duration">
+                            ⏲ Competition duration
+                        </div>
+                    </div>
+
+                    <div className="card"onClick={()=>gotoCopetition("5v5")} >
+                        <div className="title">
+                            🎸 5 v 5
+                        </div>
+                        <div className="type">
+                            🎵 Competition Type
+                        </div>
+                        <div className="duration">
+                            ⏲ Competition duration
+                        </div>
+                    </div>
+
+                    <div className="card"onClick={()=>gotoCopetition("10v10")} >
+                        <div className="title">
+                            🎸 10 v 10
+                        </div>
+                        <div className="type">
+                            🎵 Competition Type
+                        </div>
+                        <div className="duration">
+                            ⏲ Competition duration
+                        </div>
+                    </div>
+
+                    <div className="card"onClick={()=>gotoCopetition("20v20")} >
+                        <div className="title">
+                            🎸 20 v 20
+                        </div>
+                        <div className="type">
+                            🎵 Competition Type
+                        </div>
+                        <div className="duration">
+                            ⏲ Competition duration
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
