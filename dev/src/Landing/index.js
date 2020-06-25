@@ -88,9 +88,16 @@ const Landing = (props) =>{
             method:"PUT",
             data:data,
         }).then(respose=>{
-            console.log(respose.data)
-            // window.notify(respose.data.message)
-            
+            window.notify(respose.data.message)
+            if (respose.data.status){
+                window.user = data.email
+                props.history.push({
+                    pathname:"/area",
+                    state:{
+                        _id:data.email
+                    }
+                })
+            }
         })
     }
 

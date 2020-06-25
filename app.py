@@ -21,8 +21,8 @@ class Users:
         res = self.db.users.insertOne(data)
         if res['status']:
             return jsonify({
-                "message":"Registered Succesfully !",
-                "status":True
+                "message":"Registered Successfully !",
+                "status":True,
             })
 
         return jsonify({
@@ -31,7 +31,22 @@ class Users:
         })       
 
     def PUT(self,request):
-        return "PUT"
+        data = request.get_json()
+        record = self.db.users[data['email']]()
+        if len(record):
+            if record['password'] == data['password']:
+                return jsonify({
+                    "status":True,
+                    "message":"Login Successful"
+                })
+            return jsonify({
+                "status":False,
+                "message":"Wrong Password !"
+            })
+        return jsonify({
+            "status":False,
+            "message":"Account Does Not Exist !"
+        })
 
     def DELETE(self,request):
         return "DELETE"
@@ -40,7 +55,6 @@ _users = Users()
 
 @app.route("/user",methods=['GET','POST','PUT','DELETE'])
 def users():
-    print (request.get_json())
     return getattr(_users,request.method)(request)
 
 @app.route("/",methods=['GET'])

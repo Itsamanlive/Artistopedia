@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Route} from "react-router-dom";
 
 import './App.css';
 
 import Landing from './Landing';
-import Dashboard from "./Dashboard";
+import Area from './Area';
+import Competitions from "./Competitions";
 import Competition from "./Competition";
 
 const Notification = (props) =>{
@@ -42,7 +43,8 @@ const App = (props) => {
       </div>
       <Router>
         <Route path = "/" exact component = { Landing } />
-        <Route path = "/dashboard" exact component = { Dashboard } />
+        <Route path = "/area" exact component = { Area } />
+        <Route path = "/competitions" exact component = { Competitions } />
         <Route path = "/competition" exact component = { Competition } />
       </Router>
     </div>   
