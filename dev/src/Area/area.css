@@ -76,5 +76,16 @@
     text-transform: uppercase;
     letter-spacing: 5px;
     font-weight: 600;
+    transition-property: all;
+    transition-duration: 300ms;
+}
+
+.card:hover{
+    font-size: 2.5rem;
+        color: white;
+    text-shadow:  -2px -2px 0 #333,  
+    1px -1px 0 #333,
+    -1px 1px 0 #333,
+     1px 1px 0 #333;
 }
 

@@ -1,6 +1,6 @@
 
 .comp-container{
-    background-color: #ff80ab;
+    /* background-color: #ff80ab; */
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -24,6 +24,8 @@
     letter-spacing: 3px;
     font-weight: 600;
     color: white;
+    display: flex;
+    justify-content: center;
     text-shadow:  -2px -2px 0 #333,  
     1px -1px 0 #333,
     -1px 1px 0 #333,
