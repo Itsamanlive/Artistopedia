@@ -108,3 +108,48 @@
     letter-spacing: 2px;
     font-weight: 600;
 }
+
+.payment{
+    height: 30vh;
+    background-color: white;
+    padding: 40px;
+    width: 30vw;
+    border: 3px solid #333;
+    border-radius: 5px;
+}
+
+.payment .title {
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.payment .form{
+    display: grid;
+    /* grid-template-rows: 1fr 1fr; */
+    grid-gap: 10px;
+    padding:10px;
+    height: fit-content;
+}
+
+.in-1 input{
+    width: 100%;
+}
+
+.in-2{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.pay{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+}

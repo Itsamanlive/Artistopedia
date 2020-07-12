@@ -1,7 +1,14 @@
 import React from 'react';
+import axios from 'axios';
 import "./competition.css";
 
 const Dashboard = (props) =>{
+    let [stat,statState] = React.useState({
+        stat:(<div className="upload">
+                <input id="upload" type="file" onChange={uploadState} />
+                <label htmlFor="upload">➕</label>
+            </div>)
+    })
 
     let comps = [
         {
@@ -29,8 +36,23 @@ const Dashboard = (props) =>{
         })
     } 
 
-    function upload(e){
-        console.log(e.target)
+    function uploadState(e){
+        statState({
+            stat:(
+                <div className="uploaded">
+                    🎶{e.target.files[0].name}🎶
+                </div>
+            )
+        })
+        document.getElementById("submit").disabled=false;
+    }
+
+    async function upload(){
+        await axios({
+            url:"http://localhost:8080/upload"
+        }).then(response=>{
+            console.log(response)
+        })
     }
 
     return(
@@ -40,13 +62,15 @@ const Dashboard = (props) =>{
                     {comp.name}
                 </div>
                 <div className="details">
-                    {/* Competition details.... */}
+                    upload music files to participate
                 </div>
                 <div className="participate">
-                    <div className="upload">
-                        <input id="upload" type="file" onChange={upload} />
-                        <label htmlFor="upload">➕</label>
-                    </div>
+                    {stat.stat}     
+                </div>
+                <div className="submit">
+                    <button id="submit" className="btn" disabled={true}>
+                        upload
+                    </button>
                 </div>
             </div>
         </div>
