@@ -26,6 +26,9 @@ const Dashboard = (props) =>{
     ]
 
     let comp = comps[props.location.state.name];
+    let [file,fileState] = React.useState({
+        file:null
+    })
 
     function gotoCopetition(id){
         props.history.push({
@@ -44,16 +47,51 @@ const Dashboard = (props) =>{
                 </div>
             )
         })
-        document.getElementById("submit").disabled=false;
+        fileState({
+            file:e.target.files[0]
+        })
     }
 
     async function upload(){
-        await axios({
-            url:"http://localhost:8080/upload"
+        let formData = new FormData();
+        formData.append("audio_file", file.file);
+        formData.append("username",window.user);
+        
+        await axios.post('http://localhost:8080/upload', formData, {
+            headers: {
+            'Content-Type': 'multipart/form-data'
+            }
         }).then(response=>{
-            console.log(response)
+            window.notify(response.data.msg)
+            if(response.status){
+                statState({
+                    stat:(
+                        <div className="uploaded" style={{fontSize:"3rem"}}>
+                            ✔
+                        </div>
+                    )
+                })
+            }
+            else{
+                statState({
+                    stat:(
+                        <div className="uploaded" style={{fontSize:"3rem"}}>
+                            ❌
+                        </div>
+                    )
+                })
+            }
         })
     }
+
+    React.useEffect(()=>{
+        if(window.user){
+            console.log(window.user)
+        }
+        else{
+            window.location = "/"
+        }
+    })
 
     return(
         <div className="comp-container">
@@ -68,7 +106,7 @@ const Dashboard = (props) =>{
                     {stat.stat}     
                 </div>
                 <div className="submit">
-                    <button id="submit" className="btn" disabled={true}>
+                    <button id="submit" className="btn" onClick={upload}>
                         upload
                     </button>
                 </div>

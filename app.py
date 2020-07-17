@@ -65,7 +65,25 @@ def users():
 def serve_static(_type,_file):
     return send_from_directory(f"./templates/static/{_type}",_file,mimetype=f"text/{_type}")
 
+@app.route("/upload",methods=['GET','POST'])
+def upload():
+    try:
+        file = request.files.get("audio_file")
+        file.save(f"./data/uploaded/{request.form['username']}-{file.filename}")
+        return jsonify({
+            "status":True,
+            "msg":"File Uploaded !"
+        })
+    except:
+        return jsonify({
+            "status":True,
+            "msg":"Error Occured !"
+        })
+
 @app.route("/",methods=['GET'])
+@app.route("/area",methods=['GET'])
+@app.route("/competitions",methods=['GET'])
+@app.route("/competition",methods=['GET'])
 def index():
     return render_template("index.html")
 

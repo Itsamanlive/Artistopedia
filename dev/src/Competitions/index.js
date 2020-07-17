@@ -91,6 +91,15 @@ const Dashboard = (props) =>{
         comp:type === "free" ? <Area /> : <Pay />
     })
 
+    React.useEffect(()=>{
+        if(window.user){
+            console.log(window.user)
+        }
+        else{
+            window.location = "/"
+        }
+    })
+
     return(
         <div className="dash-container">
             <div className="dashboard">
